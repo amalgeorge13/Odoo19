@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_employee_loan" model="ir.actions.act_window">
+        <field name="name">Employee Loan</field>
+        <field name="res_model">employee.loan</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_employee_loan_list" model="ir.ui.view">
+        <field name="name">Employee Loan List</field>
+        <field name="model">employee.loan</field>
+        <field name="arch" type="xml">
+            <list string="Details">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="loan_amount"/>
+                <field name="installment_count"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="view_employee_loan_form" model="ir.ui.view">
+        <field name="name">Employee Loan Form</field>
+        <field name="model">employee.loan</field>
+        <field name="arch" type="xml">
+            <form string="Loan Details">
+                <header>
+                    <button name="action_approve_loan" type="object" string="Approve Loan" invisible="state != 'draft'"/>
+                    <button name="generate_installment_records" type="object" string="Installments" invisible="state != 'approved'"/>
+                    <button name="pay_installments" type="object" string="Pay" invisible="state != 'ongoing'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,approved,ongoing,paid"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="fetch_installments" type="object" class="oe_stat_button"
+                                icon="fa-pencil-square-o">
+                            <field name="loan_line_ids" widget="statinfo" string="Installments"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <h1><field name="name"/></h1>
+                        </group>
+                        <group>
+                        </group>
+                        <group>
+
+                            <field name="employee_id"/>
+                            <field name="loan_amount"/>
+                            <field name="installment_count"/>
+                        </group>
+                        <group>
+
+                            <field name="start_date"/>
+                            <field name="installment_amount"/>
+                            <field name="total_payable"/>
+                            <field name="paid_amount"/>
+                            <field name="balance_amount"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Loan Line">
+                            <field name="loan_line_ids"/>
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

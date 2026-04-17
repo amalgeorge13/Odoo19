@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="mrp_production_material_line_list" model="ir.ui.view">
+        <field name="name">Materials</field>
+        <field name="model">mrp.production.material.line</field>
+        <field name="arch" type="xml">
+            <list string="Loan Line" editable="bottom">
+
+                <field name="product_id"/>
+                <field name="required_qty"/>
+                <field name="available_qty"/>
+                <field name="consumed_qty"/>
+                <field name="remaining_qty"/>
+
+            </list>
+        </field>
+    </record>
+</odoo>

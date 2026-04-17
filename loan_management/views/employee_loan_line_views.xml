@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="loan_line_list" model="ir.ui.view">
+        <field name="name">loan line list</field>
+        <field name="model">employee.loan.line</field>
+        <field name="arch" type="xml">
+            <list string="Loan Line" editable="bottom">
+
+                <field name="loan_id"/>
+                <field name="date"/>
+                <field name="amount"/>
+                <field name="paid"/>
+
+            </list>
+        </field>
+    </record>
+</odoo>
