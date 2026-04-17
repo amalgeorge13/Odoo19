@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_wizard_reporting" model="ir.actions.act_window">
+        <field name="name">Wizard Report</field>
+        <field name="res_model">wizard.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+    <record id="action_wizard_report_form" model="ir.ui.view">
+        <field name="name">report.fiter.form</field>
+        <field name="model">wizard.report</field>
+        <field name="arch" type="xml">
+            <form string="Report">
+
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <group>
+                        <field name="customer_ids" widget="many2many_tags"/>
+                        <field name="advisor_ids" widget="many2many_tags"/>
+                    </group>
+
+                <footer>
+                    <button name="action_print_pdf_report" string="Pdf" class="oe_highlight" type="object"/>
+                    <button name="action_print_excel_report" string="Excel" class="oe_highlight" type="object"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+</odoo>

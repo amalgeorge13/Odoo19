@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<templates id="template" xml:space="preserve">
+    <t t-name="vehicle_repair_management.repair_template_highlight_carousel">
+        <t t-log="11113333,uniq"/>
+        <div t-att-id="'repair_carousel' + uniq " class="container carousel slide" data-bs-ride="carousel"
+             t-att-data-bs-interval="2000">
+            <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                <t t-foreach="chunks" t-as="chunk" t-key="chunk.id">
+                    <div t-att-class="chunk.is_active ? 'carousel-item active' : 'carousel-item'">
+                        <div class="row">
+                            <t t-foreach="chunk" t-as="item" t-key="chunk.id">
+                                <div class="block span3 col-3">
+                                    <div class="card-group">
+                                        <div class="card">
+                                            <t t-if="item.image">
+                                            <img t-att-src="'data:image/png;base64,' + item.image"
+                                                 class="img img-fluid rotate-center"
+                                                 style="width: 300px; height: 200px ;"/>
+                                                <h5 class="mb-0"><t t-esc="item.repair_reference"/></h5>
+                                                <a t-attf-href="/fetch_details/{{item.id}}" class="btn btn-primary">
+                                                See Details</a>
+                                            </t>
+                                            <t t-else="">
+                                                    <img class="img img-fluid rotate-center"
+                                                         src="/vehicle_repair_management/static/src/image.png"
+                                                         style="width: 300px; height: 200px ;"/>
+                                                <h5 class="mb-0"><t t-esc="item.repair_reference"/></h5>
+                                                <a t-attf-href="/fetch_details/{{item.id}}" class="btn btn-primary">
+                                                See Details</a>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+        <a t-attf-href="#repair_carousel{{uniq}}" class="carousel-control-prev" data-bs-slide="prev" role="button"
+           aria-label="Previous" title="Previous">
+            <span class="fa fa-chevron-circle-left fa-2x" style="color: black;"/>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a t-attf-href="#repair_carousel{{uniq}}" class="carousel-control-next" data-bs-slide="next" role="button"
+           aria-label="Next"
+           title="Next">
+            <span class="fa fa-chevron-circle-right fa-2x" style="color: black;"/>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </t>
+</templates>
+
+

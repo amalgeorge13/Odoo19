@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="model_category_super_bike" model="fleet.vehicle.model.category">
+        <field name="name">Super Bike</field>
+    </record>
+    <record id="model_category_super_car" model="fleet.vehicle.model.category">
+        <field name="name">Super Car</field>
+    </record>
+    <record id="model_category_cruiser_bike" model="fleet.vehicle.model.category">
+        <field name="name">Cruiser Bike</field>
+    </record>
+
+</odoo>

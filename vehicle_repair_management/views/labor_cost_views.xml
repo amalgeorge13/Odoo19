@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_labor_cost" model="ir.actions.act_window">
+        <field name="name">Labor Cost</field>
+        <field name="res_model">labor.cost</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="view_labor_cost_list" model="ir.ui.view">
+        <field name="name">labor.cost.list</field>
+        <field name="model">labor.cost</field>
+        <field name="arch" type="xml">
+            <list string="Labor Cost" editable="bottom">
+                        <field name="labor_name"/>
+                        <field name="hourly_cost"/>
+                        <field name="hours_spend"/>
+                        <field name="labor_cost"/>
+            </list>
+        </field>
+    </record>
+</odoo>

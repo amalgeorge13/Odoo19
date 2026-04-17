@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_vehicle_repair" model="ir.actions.act_window">
+        <field name="name">Vehicle Repair</field>
+        <field name="res_model">vehicle.repair</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_vehicle_repair_list" model="ir.ui.view">
+        <field name="name">vehicle.repair.list</field>
+        <field name="model">vehicle.repair</field>
+        <field name="arch" type="xml">
+            <list string="Repair" decoration-danger="state == 'in_progress' and estimated_delivery_date == context_today().strftime('%Y-%m-%d')"
+                  decoration-warning="state == 'in_progress' and estimated_delivery_date == (context_today() + relativedelta(days=1)).strftime('%Y-%m-%d') ">
+                <field name="repair_reference"/>
+                <field name="customer_name"/>
+                <field name="vehicle_type"/>
+                <field name="state"/>
+                <field name="estimated_delivery_date"/>
+                <field name="payment_state" widget="badge" decoration-success="payment_state == 'paid'"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="view_vehicle_repair_form" model="ir.ui.view">
+        <field name="name">vehicle.repair.form</field>
+        <field name="model">vehicle.repair</field>
+        <field name="arch" type="xml">
+            <form string="Repair">
+                <header>
+                    <button name="action_confirm" class="oe_highlight" type="object" string="Confirm"
+                            invisible="state in ('in_progress','ready_for_delivery','done','cancelled')"/>
+
+                    <button name="action_ready_for_delivery" class="oe_highlight" type="object"
+                            string="Ready For Delivery"
+                            invisible="state in ('draft','ready_for_delivery','done','cancelled')"/>
+
+                    <button name="repair_invoice" class="oe_highlight" type="object" string="Create Invoice"
+                            invisible="state != 'ready_for_delivery' or payment_state == 'paid'"/>
+
+                    <button name="action_done_repair" class="oe_highlight" type="object" string="Done" invisible="state != 'ready_for_delivery'"/>
+
+                    <button name="action_cancel" class="oe_highlight" type ="object" string="Cancel" invisible ="state == 'cancelled'"/>
+
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,in_progress,ready_for_delivery,done"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Paid" invisible="payment_state == 'unpaid'"/>
+
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_get_invoices" type="object" class="oe_stat_button"
+                                icon="fa-pencil-square-o">
+                            <field name="invoice_id" widget="statinfo" string="Invoices"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <h1>
+                                <field name="repair_reference"/>
+                            </h1>
+                        </group>
+                        <group>
+                            <field name="image" widget="image" class="oe_avatar" nolabel="1"/>
+                        </group>
+                        <group>
+                            <field name="customer_name"
+                                   context="{'res_partner_search_mode': 'customer', 'show_address': 1}"
+                                   placeholder="Type to find a customer..." readonly="state in ('in_progress')"/>
+                            <field name="service_advisor" readonly="state in ('in_progress')"/>
+                            <field name="vehicle_type" readonly="state in ('in_progress')"/>
+                            <field name="vehicle_model" readonly="state in ('in_progress')"/>
+                            <field name="vehicle_number" readonly="state in ('in_progress')"/>
+                            <field name="mobile_number" readonly="state in ('in_progress')"/>
+                            <field name="active"/>
+<!--                            <field name="state"/>-->
+<!--                            <field name="payment_state"/>-->
+                        </group>
+                        <group>
+                            <field name="start_date" readonly="state in ('in_progress')"/>
+                            <field name="duration"/>
+                            <field name="delivery_date" invisible="state != 'done'"/>
+                            <field name="service_type"/>
+                            <field name="estimated_delivery_date"/>
+                            <field name="estimated_amount"/>
+                            <field name="company_id"/>
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="Complaint">
+                            <group>
+                                <field name="customer_complaint"/>
+                                <field name="tags" widget="many2many_tags" options="{'color_field':'color'}"/>
+                            </group>
+
+                        </page>
+
+                        <page string="Labor Cost" invisible="service_type in ('free')">
+                            <group>
+                                <field name="labor_ids" nolabel="1"/>
+                            </group>
+
+                            <group>
+                                <h3>
+                                    <div style="text-align:right;">
+                                        Total Amount
+                                        <field name="labor_total_amount" readonly="1"/>
+                                    </div>
+                                </h3>
+
+                            </group>
+                        </page>
+
+                        <page string="Consumed parts">
+
+                            <group>
+                                <field name="parts_ids" nolabel="1"/>
+                            </group>
+                            <group>
+                                <h3>
+                                    <div style="text-align:right;">
+                                        Total Amount
+                                        <field name="parts_total_amount" readonly="1"/>
+                                    </div>
+                                </h3>
+                            </group>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_vehicle_repair_search" model="ir.ui.view">
+        <field name="name">vehicle.repair.search</field>
+        <field name="model">vehicle.repair</field>
+        <field name="arch" type="xml">
+            <search string="Test">
+                <field name="repair_reference"/>
+                <field name="vehicle_number"/>
+                <field name="customer_name"/>
+                <field name="service_advisor"/>
+                <field name="vehicle_type"/>
+                <filter string="Working On"
+                        name="working_on"
+                        domain="[('state','=','in_progress')]"/>
+                <filter string="Archived"
+                        name="archived"
+                        domain="[('active','=',False)]"/>
+                <filter string='Customer'
+                        name='group_Customer'
+                        context="{'group_by': 'customer_name'}"/>
+                <filter string='State'
+                        name='group_state'
+                        context="{'group_by': 'state'}"/>
+                <filter string='Vehicle Type'
+                        name='group_vehicle_type'
+                        context="{'group_by': 'vehicle_type'}"/>
+                <filter string='Responsible User'
+                        name='group_service_advisor'
+                        context="{'group_by': 'service_advisor'}"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>
+
+
+
+

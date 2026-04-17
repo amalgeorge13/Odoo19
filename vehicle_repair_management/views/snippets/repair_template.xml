@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <template id="repair_template_highlight" name="Vehicle Repairs">
+       <section class="repairs_section">
+           <div class="container">
+               <div>
+                   <h4>REPAIRS
+                       <div id="carousel">
+                       </div>
+                   </h4>
+               </div>
+           </div>
+       </section>
+   </template>
+   <template id="vehicle_repair_snippet" inherit_id="website.snippets"
+             name="Vehicle Repair Snippet">
+       <xpath expr="//snippets[@id='snippet_groups']" position="inside">
+           <t t-snippet="vehicle_repair_management.repair_template_highlight"
+              t-thumbnail="/vehicle_repair_management/static/src/image.jpeg"/>
+       </xpath>
+       <xpath expr="//snippets[@id='snippet_structure']" position="inside">
+           <t t-snippet="vehicle_repair_management.repair_template_highlight"/>
+       </xpath>
+   </template>
+</odoo>
+

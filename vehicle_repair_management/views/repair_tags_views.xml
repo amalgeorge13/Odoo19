@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_repair_tags" model="ir.actions.act_window">
+        <field name="name">Repair tags</field>
+        <field name="res_model">repair.tags</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <record id="repair_tags_list" model="ir.ui.view">
+        <field name="name">repair.tags.list</field>
+        <field name="model">repair.tags</field>
+        <field name="arch" type="xml">
+            <list string="Vehicle Tags" editable="bottom">
+                <field name="tag_name"/>
+                <field name="color" widget="color_picker"/>
+            </list>
+        </field>
+    </record>
+
+</odoo>
