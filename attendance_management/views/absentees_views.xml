@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_absentees" model="ir.actions.act_window">
+        <field name="name">Absentees</field>
+        <field name="res_model">absentees.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'group_by': 'date:day'}</field>
+    </record>
+
+    <record id="view_absentees_list" model="ir.ui.view">
+        <field name="name">absentees.employee.list</field>
+        <field name="model">absentees.employee</field>
+        <field name="arch" type="xml">
+            <list string="Absentees" >
+                <field name="employee_id"/>
+                <field name="date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_absentees_form" model="ir.ui.view">
+        <field name="name">absentees.employee.form</field>
+        <field name="model">absentees.employee</field>
+        <field name="arch" type="xml">
+            <form string="Absentees" >
+                <group>
+                    <field name="employee_id"/>
+                    <field name="date"/>
+
+                </group>
+
+            </form>
+        </field>
+    </record>
+     <record id="view_absentees_employee_search" model="ir.ui.view">
+        <field name="name">absentees.employee.search</field>
+        <field name="model">absentees.employee</field>
+        <field name="arch" type="xml">
+            <search string="Test">
+                <filter string='By Date'
+                        name='group_date'
+                        context="{'group_by': 'date'}"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

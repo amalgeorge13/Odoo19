@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="attendance_management_root" name="Attendance Management"/>
+    <menuitem id="menu_attendance_absentees" name="Menu" parent="attendance_management_root"/>
+    <menuitem id="menu_absentees" name="Absentees" parent="menu_attendance_absentees" action="action_absentees"/>
+
+</odoo>
