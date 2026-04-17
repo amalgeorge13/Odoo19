@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_sale_order_form" model="ir.ui.view">
+        <field name="name">view.sale.order.form.inherited</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//button[@name='action_preview_sale_order']" position="after">
+                <button name="first_approval" string="Approve" type="object" invisible="state != 'approve1'"
+                        groups="sale_order_approval.group_user1"/>
+                <button name="second_approval" string="Approve" type="object" invisible="state != 'approve2'"
+                        groups="base.group_system"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
