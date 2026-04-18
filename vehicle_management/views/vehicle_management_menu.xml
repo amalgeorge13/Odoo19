@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="vehicle_management_root" name="vehicle Management"/>
+    <menuitem id="menu_vehicle_management" name="Menu" parent="vehicle_management_root"/>
+    <menuitem id="menu_fleet_service_order" name="Fleet Service" parent="menu_vehicle_management" action="action_fleet_service_order"/>
+
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="revenue_list" model="ir.ui.view">
+        <field name="name">revenue.list</field>
+        <field name="model">revenue.wise</field>
+        <field name="arch" type="xml">
+            <list string="Details" editable="bottom">
+
+                <field name="sequence"/>
+                <field name="from_amount"/>
+                <field name="to_amount"/>
+                <field name="rate"/>
+
+            </list>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_crm_commission" model="ir.actions.act_window">
+        <field name="name">CRM Commission</field>
+        <field name="res_model">crm.commission</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_crm_commission_form" model="ir.ui.view">
+        <field name="name">crm.commission.form</field>
+        <field name="model">crm.commission</field>
+        <field name="arch" type="xml">
+            <form string="Details">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                        <field name="type"/>
+                        <field name="mode" invisible="type != 'revenue_wise'"/>
+
+                    </group>
+                    <notebook>
+                        <page name="Products" invisible="type != 'product_wise'">
+                            <field name="product_wise_ids"/>
+                        </page>
+                        <page name="Revenues" invisible="type != 'revenue_wise'">
+                            <field name="revenue_wise_ids"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="commission_plan_root" name="Commission Plan"/>
+    <menuitem id="menu_commission_plan" name="Menu" parent="commission_plan_root"/>
+    <menuitem id="menu_crm_commission" name="Commission" parent="menu_commission_plan" action="action_crm_commission"/>
+
+</odoo>

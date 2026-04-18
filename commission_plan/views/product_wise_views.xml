@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="products_list" model="ir.ui.view">
+        <field name="name">product.list</field>
+        <field name="model">product.wise</field>
+        <field name="arch" type="xml">
+            <list string="Products" editable="bottom">
+                <field name="product_category_id"/>
+                <field name="product_name_id"/>
+                <field name="rate"/>
+                <field name="max_commission_amount"/>
+            </list>
+        </field>
+    </record>
+</odoo>
