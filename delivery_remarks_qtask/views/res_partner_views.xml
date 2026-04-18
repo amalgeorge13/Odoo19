@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+        <record id="view_partners_form" model="ir.ui.view">
+            <field name="name">view.res.partner.form.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="most_sold_product" />
+                    <field name="total_sold_quantity" />
+                    <field name="minimum_sold_price" />
+                    <field name="maximum_sold_price" />
+                </xpath>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="fetch_sale_orders" type="object" class="oe_stat_button"
+                        icon="fa-pencil-square-o">
+                    <field name="sale_order_counts" string="Count" widget="statinfo"/>
+                </button>
+            </xpath>
+            </field>
+        </record>
+
+
+</odoo>

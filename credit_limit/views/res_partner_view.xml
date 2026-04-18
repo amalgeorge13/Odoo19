@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_res_partner_bank_form" model="ir.ui.view">
+    <field name="name">res.partner.property.form.inherited</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="account.view_partner_property_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='ignore_abnormal_invoice_date']" position="after">
+            <label string="Credit Limit" for="enable_credit_limit"/><br/>
+            <button name="enable_credit_limit" type="object" string="Enable"/>
+            <button name="disable_credit_limit" type="object" string="Disable"/>
+            <field name="warning_amount" invisible="credit_limit_active != True"/>
+            <field name="blocking_amount" invisible="credit_limit_active != True"/>
+        </xpath>
+    </field>
+    </record>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_partners_form" model="ir.ui.view">
+        <field name="name">view.res.partner.form.inherited</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="restricted" />
+                <field name="restricted_count" invisible="restricted != True"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+              <div class="oe_button_box" name="button_box">
+                  <button name="action_shop" string="Shop" type="object" class="oe_stat_button" icon="oi-food-delivery"/>
+              </div>
+          </xpath>
+        </field>
+    </record>
+
+
+
+
+
+
+
+
+
+
+</odoo>

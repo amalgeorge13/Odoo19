@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_travel_agency_booking" model="ir.actions.act_window">
+        <field name="name">Travel Agency</field>
+        <field name="res_model">travel.agency</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_booking_list" model="ir.ui.view">
+        <field name="name">travel.agency.booking.list</field>
+        <field name="model">travel.agency</field>
+        <field name="arch" type="xml">
+            <list string="Booking" decoration-success="state in ('booked')">
+                <field name="customer_name"/>
+                <field name="no_of_people"/>
+                <field name="vehicle"/>
+                <field name="date"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_booking_form" model="ir.ui.view">
+        <field name="name">travel.agency.booking.form</field>
+        <field name="model">travel.agency</field>
+        <field name="arch" type="xml">
+            <form string="Booking">
+                <header>
+                    <button name="action_booked" class="oe_highlight" type="object" string="Book" invisible="state in ('booked','cancelled')"/>
+                    <button name="action_cancelled" type="object" string="Cancel" invisible="state in ('booked','cancelled')"/>
+                    <button name="action_reschedule" class="oe_highlight" type="object" string="Reschedule" invisible="state in ('new','cancelled','ongoing')" />
+                    <button name="create_invoice" class="oe_highlight" type="object" string="Create Invoice" invisible="state in ('new','cancelled','ongoing')" />
+                    <field name="state" widget="statusbar" statusbar_visible="new,ongoing,booked"/>
+                </header>
+                <sheet>
+                    <h1>
+                        <field name="customer_name"/>
+                    </h1>
+                    <group>
+                        <group>+
+
+                            <field name="age" readonly="state in ('booked')"/>
+                            <field name="no_of_people" readonly="state in ('booked')"/>
+                            <field name="vehicle" readonly="state in ('booked')"/>
+                            <field name="date" readonly="state in ('booked')"/>
+                            <field name="no_of_days" readonly="state in ('booked')"/>
+                            <field name="state"/>
+                        </group>
+                        <group>
+                            <field name="from_city" readonly="state in ('booked')"/>
+                            <field name="to_city" readonly="state in ('booked')"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Expenses" invisible ="state in ('booked','cancelled','ongoing')">
+                            <group>
+                                <field name="driver_fare"/>
+                                <field name="petrol_expense"/>
+                                <field name="room"/>
+                                <field name="room_expense" invisible="not room"/>
+                                <field name="food"/>
+                                <field name="food_expense" invisible="not food"/>
+                            </group>
+
+                        </page>
+                        <page  string="Valuation" invisible ="state in ('new','cancelled','ongoing')">
+                            <group>
+                                <field name="driver_fare" readonly="true"/>
+                                <field name="petrol_expense" readonly="true"/>
+                                <field name="room_expense" invisible="not room" readonly="true"/>
+                                <field name="food_expense" invisible="not food" readonly="true"/>
+                                <field name="total_expense"/>
+                            </group>
+
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="action_invoice" model="ir.actions.act_window">
+        <field name="name">Vehicles</field>
+        <field name="res_model">vehicles</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <record id="action_vehicles" model="ir.actions.act_window">
+        <field name="name">Vehicles</field>
+        <field name="res_model">vehicles</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_vehicles_list" model="ir.ui.view">
+        <field name="name">vehicles.list</field>
+        <field name="model">vehicles</field>
+        <field name="arch" type="xml">
+            <list string="Vehicles">
+                <field name="vehicle_name"/>
+                <field name="no_of_seats"/>
+                <field name="vehicle_no"/>
+                <field name="type"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_vehicles_form" model="ir.ui.view">
+        <field name="name">vehicles.form</field>
+        <field name="model">vehicles</field>
+        <field name="arch" type="xml">
+            <form string="Vehicles">
+                <sheet>
+                    <h1>
+                        <field name="vehicle_name"/>
+                    </h1>
+                    <group>
+                        <field name="vehicle_no"/>
+                        <field name="no_of_seats"/>
+                        <field name="type"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_packages" model="ir.actions.act_window">
+        <field name="name">Packages</field>
+        <field name="res_model">packages</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+    <record id="view_package_list" model="ir.ui.view">
+        <field name="name">package.list</field>
+        <field name="model">packages</field>
+        <field name="arch" type="xml">
+            <list string="Packages">
+                <field name="package_name"/>
+                <field name="from_city"/>
+                <field name="to_city"/>
+                <field name="no_days"/>
+                <field name="price"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_packages_form" model="ir.ui.view">
+        <field name="name">packages.form</field>
+        <field name="model">packages</field>
+        <field name="arch" type="xml">
+            <form string="Packages">
+                <sheet>
+                    <h1>
+                    <field name="package_name"/>
+                    </h1>
+                    <group>
+                        <field name="from_city"/>
+                        <field name="to_city"/>
+                        <field name="no_days"/>
+                        <field name="price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_package_booking" model="ir.actions.act_window">
+        <field name="name">Package Booking</field>
+        <field name="res_model">package.booking</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_package_booking_list" model="ir.ui.view">
+        <field name="name">package.booking.list</field>
+        <field name="model">package.booking</field>
+        <field name="arch" type="xml">
+            <list string="Packages">
+                <field name="booking_id"/>
+                <field name="customer_name"/>
+                <field name="package_name"/>
+                <field name="no_of_people"/>
+                <field name="total_price"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_package_booking_form" model="ir.ui.view">
+        <field name="name">package.booking.form</field>
+        <field name="model">package.booking</field>
+        <field name="arch" type="xml">
+            <form string="Package Booking">
+
+                <header>
+                    <button name="package_invoice" class="oe_highlight" type="object" string="Invoice" />
+                    <button name="action_reschedule" class="oe_highlight" type="object" string="Reschedule" />
+                </header>
+                <sheet>
+                    <h1>
+                        <field name="booking_id"/>
+                    </h1>
+
+                    <group>
+                        <field name="customer_name"/>
+                        <field name="date"/>
+                        <field name="package_name"/>
+                        <field name="no_of_people"/>
+                        <field name="total_price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_booking_reschedule" model="ir.actions.act_window">
+        <field name="name">Booking Reschedule</field>
+        <field name="res_model">booking.reschedule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+<!--    <record id="view_booking_reschedule_list" model="ir.ui.view">-->
+<!--        <field name="name">booking.reschedule.list</field>-->
+<!--        <field name="model">booking.reschedule</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <list string="Packages">-->
+<!--                <field name="booking_id"/>-->
+<!--                <field name="date_from"/>-->
+<!--                <field name="date_to"/>-->
+<!--            </list>-->
+<!--        </field>-->
+<!--    </record>-->
+    <record id="view_booking_reschedule_form" model="ir.ui.view">
+        <field name="name">booking.reschedule.form</field>
+        <field name="model">booking.reschedule</field>
+        <field name="arch" type="xml">
+            <form string="Booking Reschedule">
+
+                <header>
+
+                </header>
+                <sheet>
+                    <h1>
+                        <field name="booking_id"/>
+                    </h1>
+
+                    <group>
+                        <field name="customer_name"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <button name="action_confirm_reschedule" class="oe_highlight" type="object" string="Confirm"></button>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="clear_lines.ClearButton" t-inherit="point_of_sale.ActionpadWidget" t-inherit-mode="extension">
+       <xpath
+            expr="//SelectPartnerButton"
+            position="after">
+           <button class="clear-btnn btn btn-secondary btn-lg lh-lg text-truncate w-auto"  t-on-click="() => this.onClickClr()" >
+               <span>Clear</span>
+           </button>
+       </xpath>
+   </t>
+</templates>

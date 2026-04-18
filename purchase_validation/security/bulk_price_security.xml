@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="group_bulk_price_manager" model="res.groups">
+        <field name="name">Price Manager</field>
+    </record>
+
+
+</odoo>

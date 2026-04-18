@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_travel_agency,travel.agency,model_travel_agency,base.group_user,1,1,1,1
+access_vehicles,vehicles,model_vehicles,base.group_user,1,1,1,1
+access_packages,packages,model_packages,base.group_user,1,1,1,1
+access_package_booking,package.booking,model_package_booking,base.group_user,1,1,1,1
+access_booking_reschedule,booking.reschedule,model_booking_reschedule,base.group_user,1,1,1,1

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--    main menu-->
+    <menuitem id="menu_travel_agency_root" name="Travel Agency"/>
+    <!--sub menu-->
+    <menuitem id="menu_travel_agency_sub" name="Booking" parent="menu_travel_agency_root"/>
+
+    <menuitem id="menu_travel_agency_booking" name="Booking" parent="menu_travel_agency_sub" action="action_travel_agency_booking"/>
+
+    <menuitem id="menu_package_booking" name="Package Booking" parent="menu_travel_agency_sub" action="action_package_booking"/>
+
+
+    <menuitem id="menu_travel_agency_settings" name="Settings" parent="menu_travel_agency_root"/>
+
+    <menuitem id="menu_vehicles" name="Vehicles" parent="menu_travel_agency_settings" action="action_vehicles"/>
+
+    <menuitem id="menu_packages" name="Packages" parent="menu_travel_agency_settings" action="action_packages"/>
+
+
+
+
+
+
+
+</odoo>

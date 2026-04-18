@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="pos_sale.Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('internal-note-container')]" position="after">
+            <t t-log="'product',line.product_id"/>
+            <t t-if="line.product_id.product_owner_id">
+                <span>
+                    <div><br/>
+                    <b>Product Owner : </b>
+                    <t t-log="000000,line.product_id.product_owner_id?.name"/>
+                        <t t-esc="line.product_id.product_owner_id?.name"/></div>
+                </span>
+            </t>
+        </xpath>
+    </t>
+</templates>
