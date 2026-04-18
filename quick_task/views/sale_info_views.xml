@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_sale_info" model="ir.actions.act_window">
+        <field name="name">Sale Info</field>
+        <field name="res_model">sale.info</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <record id="view_sale_info_form" model="ir.ui.view">
+        <field name="name">sale.info.form</field>
+        <field name="model">sale.info</field>
+        <field name="arch" type="xml">
+            <form string="Absentees" >
+                <group>
+                    <field name="sale_order_id"/>
+                    <button name="button_click"  type="object" string="click" class="oe_highlight"/>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+</odoo>

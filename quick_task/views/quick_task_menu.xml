@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="quick_task_root" name="Quick Task"/>
+    <menuitem id="menu_quick_task" name="Menu" parent="quick_task_root"/>
+    <menuitem id="menu_sale_info" name="Sale Info" parent="menu_quick_task" action="action_sale_info"/>
+
+</odoo>
