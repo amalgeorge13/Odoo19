@@ -7,7 +7,7 @@
     'category': 'Management',
     'application': True,
     'depends': [
-        'base','fleet','mail','hr','sale','account','website'],
+        'base','fleet','mail','hr','sale','account','website','portal'],
     'data': [
     'security/vehicle_repair_security.xml',
     'security/ir.model.access.csv',
@@ -27,6 +27,7 @@
     'views/wizard_report_views.xml',
     'views/website_repair_request.xml',
     'views/repair_request_template.xml',
+    'views/vr_portal_templates.xml',
     'views/vehicle_repair_menu.xml',
     ],
     'assets': {

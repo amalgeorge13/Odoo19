@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from dateutil.relativedelta import relativedelta
+from flake8.formatting import default
+
 from odoo import fields, models, api
 from odoo import Command
 
@@ -40,7 +42,7 @@ class VehicleRepair(models.Model):
     payment_state=fields.Selection([('unpaid','Unpaid'),('paid','Paid')],default='unpaid',required=True,string="Payment Status",compute="_compute_payment_state")
     invoice_id = fields.Many2one('account.move', string="Invoice", readonly=True)
     today=fields.Date.today()
-    total_amount = fields.Float(string="Total Amount",compute="_compute_total_amount")
+    total_amount = fields.Float(string="Total Amount",compute="_compute_total_amount",default=0)
 
 
 
@@ -59,7 +61,8 @@ class VehicleRepair(models.Model):
 
     @api.depends('parts_total_amount','labor_total_amount')
     def _compute_total_amount(self):
-        self.total_amount = self.parts_total_amount + self.labor_total_amount
+        for record in self:
+            record.total_amount = record.parts_total_amount + record.labor_total_amount
 
     @api.depends('start_date','duration')
     def _compute_estimated_delivery_date(self):
