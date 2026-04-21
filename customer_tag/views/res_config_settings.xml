@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_res_config_settings_form" model="ir.ui.view">
+        <field name="name">view.res.config.settings.form.inherited</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='invoicing_setting_container']" position="inside">
+                <setting id="Tags" >
+                            <field name="tags" widget="many2many_tags"/>
+                        </setting>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_res_config_settings_purchase_form" model="ir.ui.view">
+        <field name="name">view.res.config.settings.form.inherited</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='auto_receipt_reminder']" position="after">
+                <setting id="Tags" >
+                            <field name="tags" widget="many2many_tags"/>
+                        </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+<!--<?xml version="1.0" encoding="UTF-8" ?>-->
+<!--<odoo>-->
+<!--    <record id="view_res_config_settings_form" model="ir.ui.view">-->
+<!--        <field name="name">view.res.config.settings.form.inherited</field>-->
+<!--        <field name="model">res.config.settings</field>-->
+<!--        <field name="inherit_id" ref="base.res_config_settings_view_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//form" position="inside">-->
+<!--                 <block title="Tags" name="sale_purchase_setting_container">-->
+<!--                <setting id="Tags" >-->
+<!--                            <field name="tag_ids" widget="many2many_tags"/>-->
+<!--                        </setting>-->
+<!--                 </block>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--</odoo>-->
