@@ -1,5 +1,5 @@
 {
-    'name': 'Product Owner',
+    'name': 'Product Discount Tag',
     'author': 'Amall',
     'sequence': 2,
     'license': 'LGPL-3',
@@ -8,12 +8,14 @@
     'application': True,
     'depends': ['base','product','point_of_sale'],
     'data': [
-    'views/product_product_view.xml',
+    'security/ir.model.access.csv',
+    'views/product_template_view.xml',
 
     ],
     'assets': {
         'point_of_sale._assets_pos': [
-            'pos_product_owner/static/src/xml/pos_screen.xml',
+            'pos_discount_tag/static/src/xml/product_card.xml',
+            'pos_discount_tag/static/src/xml/orderline.xml',
         ],
     }
 

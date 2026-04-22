@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="pos_sale.Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('internal-note-container')]" position="after">
+            <t t-log="line.product_id.__lazy_product_tmpl_id"/>
+            <t t-if="line.product_id.__lazy_product_tmpl_id.discount_tag_id">
+                <span>
+                    <div><br/>Product Discount :
+                        <span t-esc="line.product_id.__lazy_product_tmpl_id.discount_tag_id?.name"/>%
+                    </div>
+                </span>
+            </t>
+        </xpath>
+    </t>
+</templates>
