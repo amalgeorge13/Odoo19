@@ -3,10 +3,9 @@ from ast import literal_eval
 
 
 class ResConfigSettings(models.TransientModel):
-    # _inherit = "res.config.settings"
     _inherit = ['pos.load.mixin','res.config.settings']
 
-    location_id=fields.Many2one('stock.location',string="Location")
+    location_id=fields.Many2one('stock.location',string="Location",domain=[('usage','=','internal')])
 
     @api.model
     def set_values(self):
@@ -38,5 +37,6 @@ class ResConfigSettings(models.TransientModel):
 
     # @api.onchange('location_id')
     # def onchange_location_id(self):
-    #     prod=self.env['product.template'].search([])
-    #     prod.write({'loc_id':self.location_id.id})
+    #     print(self.location_id,'kk123')
+        # prod=self.env['product.template'].search([])
+        # prod.write({'loc_id':self.location_id.id})

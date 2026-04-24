@@ -5,13 +5,8 @@ import { PosStore } from "@point_of_sale/app/services/pos_store";
 import { Orderline } from "@point_of_sale/app/components/orderline/orderline";
 import { usePos } from "@point_of_sale/app/hooks/pos_hook";
 import { PosConfig } from "@point_of_sale/app/models/pos_config";
+import {useState} from "@odoo/owl";
 
-//
-// patch(PosConfig.prototype, {
-//     get useProxy() {
-//         console.log(this)
-//     },
-// });
 
 patch(PosStore.prototype, {
 
@@ -26,15 +21,14 @@ console.log(this.models)
 patch(ProductCard.prototype, {
     setup() {
         super.setup();
-        console.log(this.props.product.product_variant_ids)
-        var location_qty=0
-        console.log(location_qty)
+        this.state = useState({
+            hierarchy: 23,
+        });
+
+
 
 
     },
-    // get LocationQty(){
-    //     var loction_qty=0
-    //     console.log(123456)
-    //     console.log(loction_qty)
-    // }
+
 });
+
