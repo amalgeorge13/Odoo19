@@ -24,19 +24,3 @@ class ResConfigSettings(models.TransientModel):
         )
         res.update(location_id=literal_eval(value) if value else False)
         return res
-
-    @api.model
-    def _load_pos_data_fields(self, config_id):
-        """
-        Adds the 'product_owner_id' field to the list of fields loaded into the POS.
-        """
-        data = super()._load_pos_data_fields(config_id)
-        data += ['location_id']
-        print(data)
-        return data
-
-    # @api.onchange('location_id')
-    # def onchange_location_id(self):
-    #     print(self.location_id,'kk123')
-        # prod=self.env['product.template'].search([])
-        # prod.write({'loc_id':self.location_id.id})

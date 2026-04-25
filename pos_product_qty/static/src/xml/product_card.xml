@@ -4,10 +4,9 @@
        <xpath expr="//div[hasclass('product-content')]" position="after">
            <span>
                    <div>Available Qty:
-<!--                       <t t-log="this.props.product"/>-->
-<!--                       <t t-log="this.props.product.property_stock_inventory"/>-->
-                       <t t-if="this.props.product.loc_qty > 0">
-                    <span t-esc="this.props.product.loc_qty" />
+                       <t t-log="state.qty"/>
+                       <t t-if="state.qty > 0">
+                        <span t-esc="state.qty"/>
                        </t>
                        <t t-else="">
                            0

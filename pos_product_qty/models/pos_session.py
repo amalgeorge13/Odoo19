@@ -7,6 +7,6 @@ class PosSession(models.Model):
     def _load_pos_data_models(self, config_id):
         """Return models to be loaded into the POS session."""
         data = super()._load_pos_data_models(config_id)
-        data += ['stock.quant','res.config.settings']
+        data += ['res.config.settings']
         print(data)
         return data
