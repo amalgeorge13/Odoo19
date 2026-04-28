@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+ <template id="ecom_show_extra_fieldss" inherit_id="website_sale.product" active="True" name="Show Extra Fields">
+        <xpath expr="//div[@id='product_details']" position="inside">
+            <div class="w-25 p-2 input-group d-inline-flex order-first align-middle border rounded">
+                <button type="object" class="oi oi-minus border-0 text-600" name="remove_qty"/>
+                <input name="order_qty" type="text" value="1" data-min="1" class="form-control quantity text-center border-0"/>
+                <button type="object" class="oi oi-plus border-0 text-600" name="add_qty"/>
+            </div>
+<!--            <div contenteditable="false" class="css_quantity input-group d-inline-flex order-first align-middle border">-->
+<!--                <a class="css_quantity_minus btn btn-link pe-2 js_add_cart_json border-0" aria-label="Remove one"-->
+<!--                   title="Remove one" name="remove_one" data-oe-model="ir.ui.view" data-oe-id="3305"-->
+<!--                   data-oe-field="arch" data-oe-xpath="/data/div/div/a[1]" href="#">-->
+<!--                    <i class="oi oi-minus text-600">-->
+<!--                    </i>-->
+<!--                </a>-->
+<!--                <input type="text" data-min="1" name="add_qty" data-oe-model="ir.ui.view" data-oe-id="3305"-->
+<!--                       data-oe-field="arch" data-oe-xpath="/data/div/div/input[1]"-->
+<!--                       class="form-control quantity text-center border-0" value="1"/>-->
+<!--                <a class="css_quantity_plus btn btn-link ps-2 js_add_cart_json border-0" aria-label="Add one"-->
+<!--                   title="Add one" data-oe-model="ir.ui.view" data-oe-id="3305" data-oe-field="arch"-->
+<!--                   data-oe-xpath="/data/div/div/a[2]" href="#">-->
+<!--                    <i class="oi oi-plus text-600">-->
+<!--                    </i>-->
+<!--                </a>-->
+<!--            </div>-->
+        </xpath>
+ </template>
+</odoo>
