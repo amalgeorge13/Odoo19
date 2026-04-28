@@ -8,5 +8,5 @@
     'application': True,
     'depends': ['base','project'],
     'data': [
-    # 'views/purchase_order_views.xml',
-    ]}
+    ]
+}
