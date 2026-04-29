@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="project_template_root" name="Project Template"/>
+    <menuitem id="menu_templates" name="Templates" parent="project_template_root"/>
+    <menuitem id="menu_project_template" name="Project Template" parent="menu_templates" action="action_project_template"/>
+    <menuitem id="menu_task_template" name="Task Template" parent="menu_templates" action="action_task_template"/>
+
+</odoo>

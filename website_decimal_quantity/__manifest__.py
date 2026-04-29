@@ -9,8 +9,6 @@
     'depends': [
         'base','website_sale',],
     'data': [
-    'views/website_sale_view.xml',
-
     ],
     'assets': {
         'web.assets_frontend': [

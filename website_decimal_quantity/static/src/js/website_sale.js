@@ -1,33 +1,27 @@
-/** @odoo-module */
-// import { Interaction } from "@web/public/interaction";
-// export class CounterInteraction extends Interaction {
-//     static selector = ".ecom_show_extra_fieldss";
-//     setup() {
-//         this.count = 0;
-//         console.log("Counter initialized");
-//     }
-//     async willStart() {
-//         // Load initial count from server if needed
-//         const data = await this.env.services.rpc("/api/get_count");
-//         this.count = data.count;
-//     }
-//     start() {
-//         console.log("Counter is ready with count:", this.count);
-//     }
-//     destroy() {
-//         console.log("Counter being destroyed");
-//     }
-//     remove_qty() {
-//       console.log("aaaaaaaaaaaaaaaaaaaaaaaai")
-//    }
-//
-// }
-// import publicWidget from "@web/legacy/js/public/public_widget";
-// console.log("aaaaaaaaaaaaaaaaaaaaaaaai")
-// publicWidget.registry.WebsiteSale.include({
-//    // selector : '.ecom_show_extra_fieldss',
-//    async remove_qty() {
-//       console.log("aaaaaaaaaaaaaaaaaaaaaaaai")
-//    }
-// });
+import { patch } from '@web/core/utils/patch';
+import { WebsiteSale } from '@website_sale/interactions/website_sale';
+patch(WebsiteSale.prototype, {
+    /**
+     * Event handler to increase or decrease quantity from the product page.
+     *
+     * @param {MouseEvent} ev
+     */
+    onChangeQuantity(ev) {
+        const input = ev.currentTarget.closest('.input-group').querySelector('input');
+            const min = parseFloat(input.dataset.min || 0);
+            const max = parseFloat(input.dataset.max || Infinity);
+            const previousQty = parseFloat(input.value || 0);
+            const quantity = (
+                ev.currentTarget.name === 'remove_one' ? -.1 : .1
+            ) + previousQty;
+
+            const newQty = quantity > min ? (quantity < max ? quantity : max) : min;
+            const result = newQty.toFixed(1)
+            if (newQty !== previousQty) {
+                input.value = result;
+                // Trigger `onChangeAddQuantity`.
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+    },
+});
 
