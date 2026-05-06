@@ -6,6 +6,10 @@
         <field name="model">payment.provider</field>
         <field name="inherit_id" ref="payment.payment_provider_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <widget name="web_ribbon" title="disabled" bg_color="text-bg-danger" invisible="state != 'disabled'"/>
+                <widget name="web_ribbon" title="test mode" bg_color="text-bg-info" invisible="state != 'test'"/>
+            </xpath>
             <group name="provider_credentials" position='inside'>
                 <group invisible="code != 'multisafepay'">
                     <field name="multisafepay_website_id"
