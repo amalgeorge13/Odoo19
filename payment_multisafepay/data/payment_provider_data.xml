@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <record id="payment_multisafepay" model="payment.provider">
+        <field name="name">MultiSafepay</field>
+        <field name="code">multisafepay</field>
+        <field name="company_id">1</field>
+        <field name="image_128" type="base64" file="payment_multisafepay/static/description/multisafepay.png"/>
+
+    </record>
+
+
+</odoo>
