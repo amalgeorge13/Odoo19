@@ -7,7 +7,36 @@
         <field name="code">multisafepay</field>
         <field name="company_id">1</field>
         <field name="image_128" type="base64" file="payment_multisafepay/static/description/multisafepay.png"/>
+        <field name="state">test</field>
+        <field name="is_published">True</field>
+        <field name="allow_tokenization">True</field>
+        <field name="allow_express_checkout">True</field>
+        <field name="payment_method_ids"
+               eval="[Command.set([
+                         ref('payment_multisafepay.payment_method_multisafepay'),
+                     ])]"
+        />
+    </record>
+<!--    <record id="payment.payment_provider_demo" model="payment.provider">-->
+<!--        <field name="code">demo</field>-->
+<!--        <field name="state">test</field>-->
+<!--        <field name="is_published">True</field>-->
+<!--        <field name="inline_form_view_id" ref="inline_form"/>-->
+<!--        <field name="token_inline_form_view_id" ref="token_inline_form"/>-->
+<!--        <field name="express_checkout_form_view_id" ref="express_checkout_form"/>-->
+<!--        <field name="allow_tokenization">True</field>-->
+<!--        <field name="allow_express_checkout">True</field>-->
+<!--        />-->
 
+    <record id="payment_method_multisafepay" model="payment.method">
+        <field name="name">MultiSafepay</field>
+        <field name="code">multisafepay</field>
+        <field name="sequence">1</field>
+        <field name="image" type="base64" file="payment_multisafepay/static/description/multisafepay.png"/>
+        <field name="support_tokenization">True</field>
+        <field name="support_express_checkout">False</field>
+        <field name="support_manual_capture">partial</field>
+        <field name="support_refund">partial</field>
     </record>
 
 

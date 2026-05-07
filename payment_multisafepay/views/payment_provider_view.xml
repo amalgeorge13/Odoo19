@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="inside">
                 <widget name="web_ribbon" title="disabled" bg_color="text-bg-danger" invisible="state != 'disabled'"/>
-                <widget name="web_ribbon" title="test mode" bg_color="text-bg-info" invisible="state != 'test'"/>
+                <widget name="web_ribbon" title="test mode" bg_color="text-bg-warning" invisible="state != 'test'"/>
             </xpath>
             <group name="provider_credentials" position='inside'>
                 <group invisible="code != 'multisafepay'">
