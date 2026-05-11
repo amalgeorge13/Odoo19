@@ -10,6 +10,8 @@
         'base','payment'],
     'data': [
         'data/payment_provider_data.xml',
+        'data/payment_method_data.xml',
         'views/payment_provider_view.xml',
+        'views/payment_multisafepay_templates.xml',
 
     ]}

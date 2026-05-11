@@ -12,13 +12,21 @@ class PaymentProvider(models.Model):
         required_if_provider='mutisafepay',
         copy=False,
     )
-    multisafepay_security_code = fields.Char(
-        string="MultiSafepay Secret Code",
-        required_if_provider='mutisafepay',
-        copy=False,
-    )
-    multisafepay_website_id = fields.Char(
-        string="Website ID",
-        required_if_provider='mutisafepay',
-        copy=False,
-    )
+
+
+    def _build_request_url(self, endpoint, **kwargs):
+        """Override of `payment` to build the request URL."""
+        if self.code != 'multisafepay':
+            return super()._build_request_url(endpoint, **kwargs)
+        url = 'https://testapi.multisafepay.com/v1'
+        clean_endpoint = endpoint.strip('/')
+        return f'{url}/{clean_endpoint}?api_key={self.multisafepay_api_key}'
+
+    def _build_request_headers(self, *args, **kwargs):
+        """Override of `payment` to build the request headers."""
+        if self.code != 'multisafepay':
+            return super()._build_request_headers(*args, **kwargs)
+        return {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }

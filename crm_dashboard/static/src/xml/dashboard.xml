@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="crm_dashboard.CrmDashboard">
+        <div class="card-group row main-section" style="margin: 100px;">
+            <div class="card justify-content-center border rounded-3"
+                 style="width: 200px; height: 200px ; margin: 50px;">
+                <div class="fw-bold text-center"
+                     style="font-size: 20px;">My Leads
+                </div>
+                <div class="stat_count_lead text-success text-center" style="font-size: 70px;">
+                    <span id="templates">
+                        <div id="my_lead"/>
+                    </span>
+                </div>
+            </div>
+            <div class="card justify-content-center border rounded-3"
+                 style="width: 200px; height: 200px ; margin: 50px;">
+                <div class="fw-bold text-center"
+                     style="font-size: 20px;">My Opportunity
+                </div>
+                <div class="stat_count_opp text-center text-success" style="font-size: 70px;">
+                    <span id="templates">
+                        <div id="my_opportunity"/>
+                    </span>
+                </div>
+
+            </div>
+            <div class="card justify-content-center border rounded-3"
+                 style="width: 200px; height: 200px ; margin: 50px;">
+                <div class="fw-bold text-center"
+                     style="font-size: 20px;">Expected Revenue
+                </div>
+                <div class="stat_count_ex_rev text-center text-success"
+                     style="font-size: 40px;">
+                    <span id="templates">
+                        <div id="expected_revenue"/>
+                    </span>
+                </div>
+            </div>
+            <div class="card justify-content-center border rounded-3"
+                 style="width: 200px; height: 200px ; margin: 50px;">
+                <div class="fw-bold text-center"
+                     style="font-size: 20px;">Revenue
+                </div>
+            </div>
+            <div class="card justify-content-center border rounded-3"
+                 style="width: 200px; height: 200px ; margin: 50px;">
+                <div class="fw-bold text-center"
+                     style="font-size: 20px;">Win Ratio
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
