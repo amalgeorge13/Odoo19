@@ -5,5 +5,4 @@
     <menuitem name="Dashboard" id="crm_dashboard" sequence="0"
               action="crm_dashboard_action" parent="crm_dashboard_root"/>
 
-
 </odoo>

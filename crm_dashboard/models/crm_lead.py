@@ -14,10 +14,27 @@ class CrmLead(models.Model):
        print(expected_revenue)
        print(my_leads)
        print(my_opportunity)
+       revenue = self.env['sale.order'].search([('user_id', '=', self.env.user.id),('opportunity_id','in',my_opportunity.ids)]).mapped('amount_total')
+       win_leads = self.search([('stage_id', '=', 'Won'),('user_id', '=', self.env.user.id)])
+       lost_leads = self.search([('won_status', '=','lost'),('user_id', '=', self.env.user.id),('active','=',False),('type','=','opportunity')])
+
+
+       ratio =len(win_leads)*(100/(len(win_leads)+len(lost_leads)))
+       print(ratio)
+       print(len(win_leads))
+       print(len(lost_leads))
+
+
        return {
-           'total_leads': len(my_leads),
-           'total_opportunity': len(my_opportunity),
+           'total_leads': my_leads.ids,
+           'total_opportunity': my_opportunity.ids,
            'expected_revenue': expected_revenue,
+           'revenue': sum(revenue),
            'currency': currency,
+           'win_leads': len(win_leads),
+           'lost_leads': len(lost_leads),
+           'ratio': round(ratio, 1),
        }
 
+   def action_restore(self):
+       print(self.won_status)
