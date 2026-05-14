@@ -7,9 +7,10 @@
     'category': 'Task',
     'application': True,
     'depends': [
-        'base','crm'],
+        'base','crm','sales_team','sale'],
     'data': [
     'views/crm_dashboard_view.xml',
+    'views/crm_team_view.xml',
     'views/crm_dashboard_menu.xml',
 
     ],
@@ -17,6 +18,7 @@
         'web.assets_backend': [
             'crm_dashboard/static/src/js/dashboard.js',
             'crm_dashboard/static/src/xml/dashboard.xml',
+            'https://cdn.jsdelivr.net/npm/chart.js'
         ],
     },
 
