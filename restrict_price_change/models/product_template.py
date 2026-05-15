@@ -5,8 +5,7 @@ from odoo.exceptions import ValidationError
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    new_price = fields.Float(string="New Price")
-
+    last_price_update = fields.Date(string="Last Update")
 
     @api.onchange('list_price')
     def _onchange_list_price(self):
@@ -14,6 +13,7 @@ class ProductTemplate(models.Model):
         Only Manger can change the price of products
         When Changing list price get the past sale prices calculating average
         if the changing price is less than the 80% of the average price raise validation error
+        if passes validation set the date to last price update date
         """
 
         record_id = self.env.ref('sales_team.group_sale_manager').id
@@ -30,4 +30,6 @@ class ProductTemplate(models.Model):
         min_price=avg_price*80/100
         if self.list_price < min_price:
             raise ValidationError("This Amount Lesser Than Minimum")
+        self.last_price_update = today
+
 

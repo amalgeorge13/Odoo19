@@ -8,4 +8,5 @@
     'application': True,
     'depends': ['base','product','sales_team'],
     'data': [
+        'views/product_template_view.xml',
     ]}
