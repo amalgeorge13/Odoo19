@@ -24,12 +24,8 @@ class ProductTemplate(models.Model):
 
         past_prices= self.env['sale.order.line'].search([('state','=','sale'),
                         ('product_id','=',self.product_variant_ids.ids),('create_date','>',min_date)]).mapped('price_unit')
-        print(past_prices)
         avg_price=sum(past_prices) / len(past_prices)
-        print(avg_price)
         min_price=avg_price*80/100
         if self.list_price < min_price:
             raise ValidationError("This Amount Lesser Than Minimum")
         self.last_price_update = today
-
-
