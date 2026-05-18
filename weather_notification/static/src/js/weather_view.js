@@ -1,14 +1,10 @@
 /** @odoo-module **/
-import {Component, useState} from "@odoo/owl";
+import {Component, onWillStart, useState} from "@odoo/owl";
 import { Dropdown } from "@web/core/dropdown/dropdown";
 import { registry } from "@web/core/registry";
-import { useDiscussSystray } from "@mail/utils/common/hooks";
-import { useDropdownState } from "@web/core/dropdown/dropdown_hooks";
-import { useService } from "@web/core/utils/hooks";
-import { Domain } from "@web/core/domain";
-import { user } from "@web/core/user";
-import { useCommand } from "@web/core/commands/command_hook";
-import { _t } from "@web/core/l10n/translation";
+import {useService} from "@web/core/utils/hooks";
+
+
 
 
 
@@ -20,22 +16,34 @@ export class WeatherMenu extends Component{
 
     setup() {
         super.setup();
+        this.orm = useService('orm');
         this.state = useState({
-            today : null
+            today : null,
+            temperature:null,
+            main:null,
+            description:null,
+            place:null
         });
         var string_date=new Date().toDateString();
         const date_list = string_date.split(" ");
         console.log(date_list)
         this.state.today = `${date_list[2]} ${date_list[1]} ${date_list[3]}`;
-        const date_week =date_list[0    ]
-
-        console.log(date_week)
-
-
-
+        const date_week =date_list[0]
+        onWillStart(async () => {
+            this._fetch_data();
+        });
 
 
     }
+    async _fetch_data(){
+        // console.log("test :",this.orm)
+        // console.log("1234",this)
+        let result = await this.orm.call("res.partner", "get_weather_data", []);
+        console.log(result)
+        this.state.temperature = `${result.main.temp}°C ${result.weather[0].main}`
+        this.state.description = `${result.weather[0].description} in ${result.name}`
+        this.state.place = `Near ${result.name}`
+        }
 
 }
 

@@ -7,7 +7,7 @@
     'category': 'Task',
     'application': True,
     'depends': [
-        'base','base_setup','mail',],
+        'base','base_setup','mail','sale'],
     'data': [
     'views/res_config_settings_view.xml',
 

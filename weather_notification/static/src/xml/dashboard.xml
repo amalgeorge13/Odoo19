@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="crm_dashboard.CrmDashboard">
+        <div class="overflow-scroll h-100 main-section" style="background-color: #e8f0d5;">
+            <h1><div class="text-center" style="margin-top:25px;">CRM Dashboard</div></h1>
+            <div style="margin-left:70%;padding-right:10%;">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <select name="filter" class="border-0 fw-light " id="filter" t-on-change="onFilterChange">
+                            <option class="fw-light" value="">Choose...</option>
+                            <option class="fw-light" value="year">This Year</option>
+                            <option class="fw-light" value="quarter">This Quarter</option>
+                            <option class="fw-light" value="month">This Month</option>
+                            <option class="fw-light" value="week">This Week</option>
+                        </select>
+                </div>
+                </div>
+            </div>
+            <div class="fw-light card-group row main-section" style="margin:50px;">
+                <div class="card justify-content-center shadow-sm rounded-3"
+                     style="width: 200px; height: 200px ; margin: 50px;">
+                    <div class="card-title fw-bold text-center"
+                         style="font-size: 20px;">My Leads
+                    </div>
+                    <div class="stat_count_lead text-success text-center" style="font-size: 60px;">
+                        <span id="templates">
+                            <div id="my_lead"/>
+                        </span>
+                    </div>
+                </div>
+                <div class="card justify-content-center shadow-sm rounded-3"
+                     style="width: 200px; height: 200px ; margin: 50px;">
+                    <div class="card-title fw-bold text-center"
+                         style="font-size: 20px;">My Opportunity
+                    </div>
+                    <div class="stat_count_opp text-center text-success" style="font-size: 60px;">
+                        <span id="templates">
+                            <div id="my_opportunity"/>
+                        </span>
+                    </div>
+                </div>
+                <div class="card justify-content-center shadow-sm rounded-3"
+                     style="width: 200px; height: 200px ; margin: 50px;">
+                    <div class="card-title fw-bold text-center"
+                         style="font-size: 20px;">Expected Revenue
+                    </div>
+                    <div class="stat_count_ex_rev text-center text-success"
+                         style="font-size: 40px;">
+                        <span id="templates">
+                            <div id="expected_revenue"/>
+                        </span>
+                    </div>
+                </div>
+                <div class="card justify-content-center shadow-sm rounded-3"
+                     style="width: 200px; height: 200px ; margin: 50px;">
+                    <div class="card-title fw-bold text-center"
+                         style="font-size: 20px;">Revenue
+                    </div>
+                    <div class="stat_count_ex_rev text-center text-success"
+                         style="font-size: 40px;">
+                        <span id="templates">
+                            <div id="revenue"/>
+                        </span>
+                    </div>
+                </div>
+                <div class="card justify-content-center shadow-sm rounded-3"
+                     style="width: 200px; height: 200px ; margin: 50px;">
+                    <div class="card-title fw-bold text-center"
+                         style="font-size: 20px;">Win Ratio
+                    </div>
+                    <div class="stat_count_opp text-center text-success" style="font-size: 50px;">
+                        <span id="templates">
+                            <div id="ratio"/>
+                        </span>
+                    </div>
+                    <div class="stat_count_opp text-center" style="font-size: 20px;">
+                        <span id="templates">
+                            <div id="win_leads"/>
+                        </span>
+                    </div>
+                    <div class="stat_count_opp text-center" style="font-size: 20px;">
+                        <span id="templates">
+                            <div id="lost_leads"/>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-left : 200px;">
+                <div class="container-fluid py-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold text-center">Opportunity/Lead</h5>
+                                    <canvas id="chart_activity_graph"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold text-center">Activity</h5>
+                                    <!--                                <div style="height: 450px;">-->
+                                    <canvas id="chart_activity_pie"/>
+                                    <!--                                </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid py-4">
+                    <div class="col-md-10">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold text-center">Leads By Month</h5>
+                                <table class="table border">
+                                    <thead>
+                                        <tr>
+                                            <th>January</th>
+                                            <th>February</th>
+                                            <th>March</th>
+                                            <th>April</th>
+                                            <th>May</th>
+                                            <th>June</th>
+                                            <th>July</th>
+                                            <th>August</th>
+                                            <th>September</th>
+                                            <th>October</th>
+                                            <th>November</th>
+                                            <th>December</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><div id="jan"/></td>
+                                            <td><div id="feb"/></td>
+                                            <td><div id="mar"/></td>
+                                            <td><div id="apr"/></td>
+                                            <td><div id="may"/></td>
+                                            <td><div id="june"/></td>
+                                            <td><div id="july"/></td>
+                                            <td><div id="aug"/></td>
+                                            <td><div id="sep"/></td>
+                                            <td><div id="oct"/></td>
+                                            <td><div id="nov"/></td>
+                                            <td><div id="dec"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid py-4">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold text-center">Leads by Medium</h5>
+                                    <!--                                <div style="height: 450px;">-->
+                                    <canvas id="chart_leads_medium_doughnut"/>
+                                    <!--                                </div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card h-100 shadow-sm justify-content-center">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold text-center">Leads by Campaign</h5>
+                                    <!--                                <div style="height: 450px;">-->
+                                    <canvas id="chart_leads_campaign_line"/>
+                                    <!--                                </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>
