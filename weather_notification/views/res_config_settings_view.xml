@@ -12,10 +12,7 @@
                             <field name="api_key"/>
                         </setting>
                         <setting id="Latitude and Longitude">
-                            <field name="use_lat_long"/>
-                            <field name="latitude" invisible="not use_lat_long"/><br/>
-                            <field name="longitude" invisible="not use_lat_long"/>
-
+                            <field name="method"/>
                         </setting>
                     </block>
                 </div>

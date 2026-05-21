@@ -11,10 +11,13 @@
             <div class="card h-100 shadow-sm"
                  t-attf-style="background-image:url('/weather_notification/static/src/weather_test.png');
                  background-size:cover;">
-                <span class=" bold fs-6 m-3" t-esc="state.today"/>
-                <span class=" bold fs-3 m-3" t-esc="state.temperature"/>
-                <span class=" bold fs-4 m-3" t-esc="state.description"/>
-                <span class=" bold fs-5 m-3" t-esc="state.place"/>
+                <div class="m-3">
+                    <span class=" bold fs-6 ml-3 mt-3" t-esc="state.today"/><br/>
+                    <span class=" bold fs-1 ml-3" t-esc="state.temperature"/><br/>
+                    <span class=" bold fs-4 ml-3" t-esc="state.description"/><br/>
+                    <span class=" bold fs-5 ml-3" t-esc="state.place"/><br/>
+                    <span class=" bold fs-6 ml-3" t-esc="state.last_update"/>
+                </div>
 
 
 
