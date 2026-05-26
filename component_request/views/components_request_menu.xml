@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="components_request_root" name="Components Request"/>
+    <menuitem id="menu_components_request" name="Menu" parent="components_request_root"/>
+    <menuitem id="menu_product_request" name="Components Request" parent="menu_components_request" action="action_product_request"/>
+
+</odoo>
