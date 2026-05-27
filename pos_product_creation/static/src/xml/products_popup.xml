@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_product_creation.ProductsPopup">
+        <Dialog title.translate="Products Information">
+
+        <div class="screen h-100 bg-100">
+            <div>
+                <button class="create-product card btn btn-primary btn-lg lh-lg my-2 m-3">
+                    Create
+                </button>
+            </div>
+            <div class="container-fluid py-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-center">Products</h5>
+                        <table class="table border">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Code</th>
+                                    <th>Price</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+       </div>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary o-default-button"
+                        t-on-click="() => this.closePopupScreen()">Back</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

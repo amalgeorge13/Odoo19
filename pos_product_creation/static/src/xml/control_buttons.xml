@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
-    <t t-name="point_of_sale.SelectProductButton" t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
-       <xpath
+    <t t-name="pos_product_creation.ControlButtons" t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
+        <xpath
             expr="//SelectPartnerButton"
             position="after">
-           <button class="product-btn" t-att-class="buttonClass" t-on-click="() => this.ListProduct()"
-                   t-if="!props.showRemainingButtons">
-               <span>Products</span>
-           </button>
-       </xpath>
-   </t>
+            <button t-att-class="buttonClass" t-on-click="() => this.onClickPopup()">
+               <i class=" me-1"/>Products</button>
+        </xpath>
+    </t>
 </templates>
-
