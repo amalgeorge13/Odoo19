@@ -5,7 +5,8 @@
 
         <div class="screen h-100 bg-100">
             <div>
-                <button class="create-product card btn btn-primary btn-lg lh-lg my-2 m-3">
+                <button class="create-product card btn btn-primary btn-lg lh-lg my-2 m-3"
+                        t-on-click="() => this.createProduct()">
                     Create
                 </button>
             </div>
@@ -18,17 +19,38 @@
                                 <tr>
                                     <th>Product</th>
                                     <th>Code</th>
+                                    <th>Category</th>
                                     <th>Price</th>
                                     <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
+                                <tr t-foreach="state.products"
+                                    t-as="product"
+                                    t-key="product.id">
 
+                                    <td>
+                                        <t t-esc="product.name"/>
+                                    </td>
+
+                                    <td>
+                                        <t t-esc="product.default_code"/>
+                                    </td>
+
+                                    <td>
+                                        <t t-esc="product.categ_id.name"/>
+                                    </td>
+
+                                    <td>
+                                        <t t-esc="product.lst_price"/>
+                                    </td>
+
+                                    <td>
+                                        <button class="btn btn-primary"
+                                                t-on-click="() => this.editProduct(product)">
+                                            Edit
+                                        </button>
+                                    </td>
 
                                 </tr>
                             </tbody>

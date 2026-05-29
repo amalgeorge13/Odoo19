@@ -19,6 +19,10 @@
             'pos_product_creation/static/src/xml/control_buttons.xml',
             'pos_product_creation/static/src/js/products_popup.js',
             'pos_product_creation/static/src/xml/products_popup.xml',
+            'pos_product_creation/static/src/js/create_product.js',
+            'pos_product_creation/static/src/xml/create_product.xml',
+            'pos_product_creation/static/src/js/edit_product.js',
+            'pos_product_creation/static/src/xml/edit_product.xml',
         ],
     },
 }

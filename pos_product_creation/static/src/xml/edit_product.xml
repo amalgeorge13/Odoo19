@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_product_creation.EditProduct">
+        <Dialog title.translate="Product Edit">
+
+        <div class="screen h-100 bg-100">
+            <form id="productEditForm">
+                    <div class=" d-flex justify-content-between align-items-center p-3">
+                    <label class="form-label label" for="product_name">Name</label>
+                        <input t-model="state.product" type="text" class="w-75 form-control" name="product_name"/>
+                    </div>
+                    <div class=" d-flex justify-content-between align-items-center p-3">
+                    <label class="form-label label" for="type">Type</label>
+                        <select name="type" class="w-75 form-control" id="type">
+                            <option class="fw-light" value="">Choose...</option>
+                            <option class="fw-light" value="consu">Goods</option>
+                            <option class="fw-light" value="service">Service</option>
+                            <option class="fw-light" value="combo">Combo</option>
+                        </select>
+                    </div>
+
+
+
+                <div class=" d-flex justify-content-between align-items-center p-3">
+                    <label class="form-label label" for="price">Price</label>
+                    <input t-model="state.price" type="number" class="w-75 form-control" name="price"/>
+                </div>
+
+
+                </form>
+       </div>
+            <t t-set-slot="footer">
+                <button id="submit-btn" class="btn btn-primary o-default-button"
+                        t-on-click="() => this.saveProduct(state.id)">Save</button>
+                <button class="btn btn-primary o-default-button"
+                        t-on-click="() => this.closeEditProduct()">Back</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>
