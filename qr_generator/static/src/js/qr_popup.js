@@ -2,7 +2,6 @@ import {Dialog} from "@web/core/dialog/dialog";
 import {Component, useState} from "@odoo/owl";
 
 /*
-creating new component to edit existing product record
 */
 export class QrPopup extends Component {
     static template = "qr_generator.QrPopup";
@@ -10,26 +9,34 @@ export class QrPopup extends Component {
 
     setup() {
         super.setup();
+
     }
+
     async generateQR(ev) {
-        const form = document.getElementById('QrGenerateForm');
-        const data = new FormData(form);
+        const textValue = document.getElementById("text").value;
+        console.log(textValue)
 
-
-        // Or view all values at once
-        const allValues = Object.fromEntries(data.entries());
-        console.log(allValues)
+        const qrcode = new QRCode(document.getElementById('qrcode'), {
+            text: textValue,
+            width: 128,
+            height: 128,
+            colorDark: '#000',
+            colorLight: '#fff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
 
     }
-    resetQR(){
-        console.log(1111)
+
+    resetQR() {
+        document.getElementById("text").value = null;
+        document.getElementById("qrcode").value = null;
     }
 
     /*
     close popup screen
     */
 
-    closeQrPopup(){
+    closeQrPopup() {
         this.props.close();
     }
 
