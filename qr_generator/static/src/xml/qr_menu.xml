@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+<t t-name="qr_generator.QrMenu">
+
+        <div style="padding: 12px;">
+            <i class="fa fa-lg fa-qrcode text-light" role="img" aria-label="Qr" t-on-click="() => this.onClickQrMenu()"/>
+        </div>
+
+</t>
+
+</templates>
