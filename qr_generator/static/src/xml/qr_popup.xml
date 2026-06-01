@@ -15,10 +15,18 @@
                     <button type="button" id="reset-btn" class="btn btn-primary o-default-button col-1 m-4"
                             t-on-click="() => this.resetQR()">Reset</button>
                 </div>
-<!--                <div id="qrcode_container" class="d-flex justify-content-center p-3 bg-light"></div>-->
-                <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"/>
 
-                <div id="qrcode"></div>
+                <div id="qr_body">
+                    <div id="qrcode"/>
+                </div>
+
+                <t t-log="qrcode"/>
+
+                <div t-if="state.qrcode">
+                    <br/><button type="button" id="download-btn" class="btn btn-primary o-default-button"
+                            t-on-click="() => this.downloadQR()">Download</button>
+                </div>
             </form>
        </div>
             <t t-set-slot="footer">
